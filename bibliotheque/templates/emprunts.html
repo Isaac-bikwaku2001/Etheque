@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Langue</th>
+            <th scope="col">Date d'Edition</th>
+            <th scope="col">Image</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for livre in livres %}
+            <tr>
+                <th scope="row">{{livre.id}}</th>
+                <td>{{livre.titre}}</td>
+                <td>{{livre.langue}}</td>
+                <td>{{livre.date_edition}}</td>
+                <td><img src={{livre.image.url}} style="width: 70px; height: 70px;" /></td>
+                <td>{{livre.auteur.nom}} {{livre.auteur.prenom}}</td>
+                <td>{{livre.genre.libelle}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="card">
+    <div class="card-body">
+		<a href="{% url 'home' %}" class="btn btn-light btn-block">Accueil</a>
+    </div>
+</div>
+{% endblock content %}

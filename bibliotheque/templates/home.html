@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for form in forms %}
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <a href="{% url 'detail' form.id %}">
+            <img class="card-img-top" src="{{form.image.url}}" alt="{{form.titre}}" />
+        </a>
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder text-danger">{{form.titre}}</h5>
+                <!-- Product genre-->
+                <h5 class="fw-bolder text-success">{{form.genre.libelle}}</h5>
+                <!-- Product langue-->
+                <h5 class="fw-bolder text-primary">{{form.langue}}</h5>
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart_add' form.id %}">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
